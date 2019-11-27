@@ -1,0 +1,313 @@
+<!-- Loads the path to your static files -->
+{% load staticfiles %}
+
+    <!-- Custom Style -->
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" type="text/css" href="/static/css/all.css">
+    
+    <!-- Owl-Carousel -->
+    <link rel="stylesheet" type="text/css" href="/static/css/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/owl.theme.default.min.css">
+
+    <!-- AOS Library -->
+    <link rel="stylesheet" type="text/css" href="/static/css/aos.css">
+
+<!-- Navigaiton -->
+    <nav class="nav">
+        <div class="nav-menu flex-row">
+            <div class="nav-brand">
+                <a href="{% url 'naslovna:naslovna' %}" class="text-gray">Moje Dijete</a>
+            </div>
+            <div class="toggle-collapse">
+              <div class="toggle-icons">
+                <i class="fas fa-bars"></i>
+              </div>
+            </div>
+            <div>
+              <ul class="nav-items">
+                <li class="nav-link">
+                    <a href="{% url 'naslovna:naslovna' %}">Naslovna</a>
+                </li>
+                <li class="nav-link">
+                    <a href="{% url 'vijesti:vijesti' %}">Vijesti</a>
+                </li>
+                <li class="nav-link">
+                    <a href="{% url 'mame:mame' %}">Mame</a>
+                </li>
+                <li class="nav-link">
+                    <a href="{% url 'trudnice:trudnice' %}">Trudnice</a>
+                </li>
+                <li class="nav-link">
+                    <a href="{% url 'djeca:djeca' %}">Djeca</a>
+                </li>
+                <li class="dropdown">
+                  <button class="dropbtn">Roditelji pitaju</button>
+                  <div class="dropdown-content">
+                    <a href="{% url 'pitanja:pitanja' %}">Pitanja</a>
+                    <a href="{% url 'st:st' %}">Stručni tekstovi</a>
+                  </div>
+                </li>
+                <li class="nav-link">
+                    <a href="{% url 'recepti:recepti' %}">Recepti</a>
+                </li>
+                <li class="nav-link">
+                    <a href="{% url 'blog:blog' %}">Blog</a>
+                </li>
+                <li class="nav-link">
+                    <a href="{% url 'portal:portal' %}">O portalu</a>
+                </li>
+                <li class="nav-link">
+                    <a href="/admin/">Admin</a>
+                </li>
+              </ul>
+            </div>
+            <div class="social text-gray">
+              <a href="https://www.facebook.com/Moje-dijete-%C4%8Dasopis-za-roditelje-2261001020791333/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </nav>
+    <!-- Navigaiton end -->
+
+<main>
+
+      <!-- Site Title -->
+
+      <section class="site-title" style="background: url('/static/assets/blog1A.jpg'); background-size: cover; opacity: 70%;">
+        <div class="site-background" data-aos="fade-up" data-aos-delay="100">
+          <h1>Dobrodošli na stranicu Blog</h1>
+          <h3>Časopis za roditelje</h3>
+          <a href="https://mojedijetecasopis.blogspot.com/" target="_black"><button class="btn">Idi na blog</button></a>
+        </div>
+      </section>
+
+      <!-- Site Title end -->
+
+      <!-- Site Content -->
+
+      <section class="container">
+        <div class="site-content">
+          <div class="posts">
+            {% for blog in sve_objave %}
+            <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
+              <div class="post-image">
+                <div>
+                  <a href="{% url 'blog:detalj' blog.id %}"><img src="{{ blog.slika.url }}" class="img" alt="blog"></a>
+                </div>
+                <div class="post-info flex-row">
+                  <span><i class="fas fa-user text-gray">&nbsp;&nbsp;Admin</i></span>
+                  <span><i class="fas fa-calendar-alt text-gray">&nbsp;&nbsp; {{ blog.datum }}</i></span>
+                  <span>Nema Komentara</span>
+                </div>
+              </div>
+              <div class="post-title">
+                <a href="{% url 'blog:detalj' blog.id %}">{{ blog.naslov }}</a>
+                <p>{{ blog.tekst | truncatechars:280 }}</p>
+                <a href="{% url 'blog:detalj' blog.id %}"><button class="btn post-btn">Pročitaj više &nbsp;<i class="fas fa-arrow-right"></i></button></a>
+              </div>
+            </div>
+            <hr>
+            {% endfor %}
+            <div class="pagination flex-row">
+              <a href="#"><i class="fas fa-chevron-left"></i></a>
+              <a href="#" class="pages">1</a>
+              <a href="#" class="pages">2</a>
+              <a href="#" class="pages">3</a>
+              <a href="#"><i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+          <aside class="sidebar">
+            <div class="category">
+              <h2>Kategorije</h2>
+              <ul class="category-list">
+                <li class="list-items" data-aos="fade-left" data-aos-delay="100">
+                  <a href="#">Trudnice</a>
+                  <span>(0)</span>
+                </li>
+                <li class="list-items" data-aos="fade-left" data-aos-delay="200">
+                  <a href="#">Djeca</a>
+                  <span>(0)</span>
+                </li>
+                <li class="list-items" data-aos="fade-left" data-aos-delay="300">
+                  <a href="#">Mame</a>
+                  <span>(0)</span>
+                </li>
+                <li class="list-items" data-aos="fade-left" data-aos-delay="400">
+                  <a href="#">Recepti</a>
+                  <span>(0)</span>
+                </li>
+                <li class="list-items" data-aos="fade-left" data-aos-delay="500">
+                  <a href="#">Vijesti</a>
+                  <span>(0)</span>
+                </li>
+              </ul>
+            </div>
+            <div class="popular-post">
+              <h2>Popularne Objave</h2>
+              <div class="post-content" data-aos="flip-up" data-aos-delay="200">
+                <div class="post-image">
+                  <div>
+                    <img src="../../static/index/assets/popular-post/m-blog-1.jpg" class="img" alt="blog1">
+                  </div>
+                  <div class="post-info flex-row">
+                    <span><i class="fas fa-calendar-alt text-gray">&nbsp;&nbsp; 01 October 2019</i></span>
+                    <span>2 Komentara</span>
+                  </div>
+                </div>
+                <div class="post-title">
+                  <a href="#">New data recording system to better analyse road accidents</a>
+                </div>
+              </div>
+              <div class="post-content" data-aos="flip-up" data-aos-delay="300">
+                <div class="post-image">
+                  <div>
+                    <img src="../../static/index/assets/popular-post/m-blog-2.jpg" class="img" alt="blog1">
+                  </div>
+                  <div class="post-info flex-row">
+                    <span><i class="fas fa-calendar-alt text-gray">&nbsp;&nbsp; 01 October 2019</i></span>
+                    <span>2 Komentara</span>
+                  </div>
+                </div>
+                <div class="post-title">
+                  <a href="#">New data recording system to better analyse road accidents</a>
+                </div>
+              </div>
+              <div class="post-content" data-aos="flip-up" data-aos-delay="400">
+                <div class="post-image">
+                  <div>
+                    <img src="../../static/index/assets/popular-post/m-blog-3.jpg" class="img" alt="blog1">
+                  </div>
+                  <div class="post-info flex-row">
+                    <span><i class="fas fa-calendar-alt text-gray">&nbsp;&nbsp; 01 October 2019</i></span>
+                    <span>2 Komentara</span>
+                  </div>
+                </div>
+                <div class="post-title">
+                  <a href="#">New data recording system to better analyse road accidents</a>
+                </div>
+              </div>
+              <div class="post-content" data-aos="flip-up" data-aos-delay="500">
+                <div class="post-image">
+                  <div>
+                    <img src="../../static/index/assets/popular-post/m-blog-4.jpg" class="img" alt="blog1">
+                  </div>
+                  <div class="post-info flex-row">
+                    <span><i class="fas fa-calendar-alt text-gray">&nbsp;&nbsp; 01 October 2019</i></span>
+                    <span>2 Komentara</span>
+                  </div>
+                </div>
+                <div class="post-title">
+                  <a href="#">New data recording system to better analyse road accidents</a>
+                </div>
+              </div>
+              <div class="post-content" data-aos="flip-up" data-aos-delay="600">
+                <div class="post-image">
+                  <div>
+                    <img src="../../static/index/assets/popular-post/m-blog-5.jpg" class="img" alt="blog1">
+                  </div>
+                  <div class="post-info flex-row">
+                    <span><i class="fas fa-calendar-alt text-gray">&nbsp;&nbsp; 01 October 2019</i></span>
+                    <span>2 Komentara</span>
+                  </div>
+                </div>
+                <div class="post-title">
+                  <a href="#">New data recording system to better analyse road accidents</a>
+                </div>
+              </div>
+            </div>
+            <div class="newsletter" data-aos="fade-up" data-aos-delay="300">
+              <h2>Novosti</h2>
+              <div class="form-element">
+                <input type="text" class="input-element" placeholder="Email">
+                <button class="btn form-btn">Pretplati se</button>
+              </div>
+            </div>
+            <div class="popular-tags">
+              <h2>Popularni Tagovi</h2>
+              <div class="tags flex-row">
+                <span class="tag" data-aos="flip-up" data-aos-delay="100">majka</span>
+                <span class="tag" data-aos="flip-up" data-aos-delay="200">dijete</span>
+                <span class="tag" data-aos="flip-up" data-aos-delay="300">doktor</span>
+                <span class="tag" data-aos="flip-up" data-aos-delay="400">pitanje</span>
+                <span class="tag" data-aos="flip-up" data-aos-delay="500">roditelj</span>
+                <span class="tag" data-aos="flip-up" data-aos-delay="600">vijesti</span>
+                <span class="tag" data-aos="flip-up" data-aos-delay="700">vakcine</span>
+                <span class="tag" data-aos="flip-up" data-aos-delay="800">pedijatar</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ---------x----------- Site Content -----------x--------- -->
+
+
+    </main>
+
+<!-- ---------------------- Footer -------------------------- -->
+
+    <footer class="footer">
+      <div class="container">
+        <div class="about-us" data-aos="fade-right" data-aos-delay="200">
+          <h2>O nama</h2>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus reprehenderit ipsum aut veritatis temporibus dicta aspernatur ex delectus non mollitia?</p>
+        </div>
+        <div class="newsletter" data-aos="fade-right" data-aos-delay="200">
+          <h2>Novosti</h2>
+          <p>Budi uvijek u toku</p>
+          <div class="form-element">
+            <input type="text" placeholder="Email"><span><i class="fas fa-chevron-right"></i></span>
+          </div>
+        </div>
+        <div class="instagram" data-aos="fade-left" data-aos-delay="200">
+          <h2>Instagram</h2>
+          <div class="flex-row">
+            <img src="/static/assets/instagram/thumb-card3.png" alt="insta1">
+            <img src="/static/assets/instagram/thumb-card4.png" alt="insta2">
+            <img src="/static/assets/instagram/thumb-card5.png" alt="insta3">
+          </div>
+          <div class="flex-row">
+            <img src="/static/assets/instagram/thumb-card6.png" alt="insta4">
+            <img src="/static/assets/instagram/thumb-card7.png" alt="insta5">
+            <img src="/static/assets/instagram/thumb-card8.png" alt="insta6">
+          </div>
+        </div>
+        <div class="follow" data-aos="fade-left" data-aos-delay="200">
+          <h2>Zaprati nas</h2>
+          <p>Budimo društveni</p>
+          <div>
+            <a href="https://www.facebook.com/Moje-dijete-%C4%8Dasopis-za-roditelje-2261001020791333/" target="_black"><i class="fab fa-facebook-f"></i></a>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-youtube"></i>
+          </div>
+        </div>
+      </div>
+      <div class="right flex-row">
+        <h4 class="text-gray">
+          Copyright © Moje dijete - časopis za roditelje 2019 All rights reserved | made by
+          <a href="https://www.youtube.com/channel/UCUoHLEnWUoGqbcFGhBQJHmQ" target="_black">Rade Gojković <i class="fab fa-youtube"></i></a> 
+        </h4>
+      </div>
+      <div class="move-up">
+        <span><i class="fas fa-arrow-circle-up fa-2x"></i></span>
+      </div>
+    </footer>
+
+    <!-- Footer end -->
+
+    <!-- Jquery Library file -->
+    <script src="/static/js/Jquery3.4.1.min.js"></script>
+
+    <!-- Owl-Carousel js -->
+    <script src="/static/js/owl.carousel.js"></script>
+
+    <!-- AOS js Library -->
+    <script src="/static/js/aos.js"></script>
+
+    <!-- Custom Javascript file -->
+    <script src="/static/js/main.js"></script>

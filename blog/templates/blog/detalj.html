@@ -1,0 +1,8 @@
+    <h1>{{ novaobjava.naslov }}</h1>
+    <p>{{ novaobjava.datum }}</p>
+    <img src="{{ novaobjava.slika.url }}" />
+    <p>{{ novaobjava.tekst }}</p>
+
+    {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+    {% endif %}

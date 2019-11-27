@@ -1,0 +1,9 @@
+
+    <h1>{{ tekstovi.naslov }}</h1>
+    <p>{{ tekstovi.datum }}</p>
+    <img src="{{ tekstovi.slika.url }}" />
+    <p>{{ tekstovi.tekst }}</p>
+
+    {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
