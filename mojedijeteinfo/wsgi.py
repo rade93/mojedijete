@@ -7,7 +7,7 @@ For more information on this file, see
 https://docs.djangoproject.com/en/2.2/howto/deployment/wsgi/
 """
 
-from mojedijeteinfo.wsgi import MojeDijeteInfoApplication
+from whitenoise.django import DjangoWhiteNoise
 import os
 
 from django.core.wsgi import get_wsgi_application
@@ -16,4 +16,4 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mojedijeteinfo.settings')
 
 application = get_wsgi_application()
 
-application = MojeDijeteInfoApplication(application)
+application = DjangoWhiteNoise(application)
