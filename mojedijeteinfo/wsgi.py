@@ -14,4 +14,4 @@ from mojedijeteinfo.wsgi import MojedijeteinfoApplication
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mojedijeteinfo.settings')
 
-application = MojedijeteinfoApplication()
+application = MojedijeteinfoApplication(application)
