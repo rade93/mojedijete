@@ -8,6 +8,7 @@ verify_ssl = true
 [packages]
 gunicorn = "*"
 whitenoise = "*"
+python-virtualenv = "*"
 
 [requires]
 python_version = "3.7"
